@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rescon Soluções Contábeis — Sua Empresa com a Saúde em Dia</title>
+  <meta name="description" content="Escritório de contabilidade especializado em assessoria contábil, fiscal, tributária e trabalhista. Abertura de empresas, declarações e muito mais." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan:   #00BCD4;
+      --cyan2:  #00E5FF;
+      --black:  #080808;
+      --dark:   #111118;
+      --card:   #16161E;
+      --border: rgba(0,188,212,0.18);
+      --text:   #FFFFFF;
+      --muted:  rgba(255,255,255,0.55);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body:    'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      background: rgba(8,8,8,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 42px; height: 42px;
+      background: var(--cyan);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--black);
+      letter-spacing: 1px;
+    }
+    .nav-logo-text { font-family: var(--font-display); font-size: 20px; letter-spacing: 2px; color: var(--text); }
+    .nav-logo-sub  { font-size: 9px; color: var(--cyan); letter-spacing: 3px; text-transform: uppercase; display: block; line-height: 1; }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .nav-cta {
+      background: var(--cyan);
+      color: var(--black) !important;
+      padding: 9px 22px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      font-size: 13px !important;
+      transition: background .2s, transform .15s !important;
+    }
+    .nav-cta:hover { background: var(--cyan2) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 68px 5vw 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #080808 50%, #0a1520 100%);
+    }
+    /* Linha diagonal ciano — signature element */
+    .hero-line {
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 3px;
+      height: 130%;
+      background: linear-gradient(180deg, transparent 0%, var(--cyan) 30%, var(--cyan2) 60%, transparent 100%);
+      transform: rotate(-18deg);
+      opacity: 0.5;
+    }
+    .hero-line-2 {
+      position: absolute;
+      top: -10%;
+      right: 8%;
+      width: 1px;
+      height: 130%;
+      background: linear-gradient(180deg, transparent 0%, var(--cyan) 40%, transparent 100%);
+      transform: rotate(-18deg);
+      opacity: 0.2;
+    }
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,188,212,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 28px; height: 2px;
+      background: var(--cyan);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+    .hero h1 span { color: var(--cyan); }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--cyan);
+      color: var(--black);
+      padding: 15px 32px;
+      border-radius: 7px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 0 24px rgba(0,188,212,0.35);
+    }
+    .btn-primary:hover { background: var(--cyan2); transform: translateY(-2px); box-shadow: 0 0 36px rgba(0,188,212,0.5); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 7px;
+      font-weight: 500;
+      font-size: 15px;
+      text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 38px;
+      color: var(--cyan);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 96px 5vw; }
+    .section-alt { background: var(--dark); }
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--cyan);
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-label::before { content: ''; width: 24px; height: 2px; background: var(--cyan); display: block; }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 58px);
+      letter-spacing: 1.5px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .section-sub { color: var(--muted); font-size: 16px; max-width: 520px; line-height: 1.7; margin-bottom: 56px; }
+
+    /* ── SERVIÇOS ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: border-color .2s, transform .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--cyan2));
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .service-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+    .service-card:hover::before { opacity: 1; }
+    .service-icon {
+      width: 48px; height: 48px;
+      background: rgba(0,188,212,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+    .service-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+    .service-card p  { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── POR QUE RESCON ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .why-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color .2s;
+    }
+    .why-item:hover { border-color: var(--cyan); }
+    .why-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .why-item h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .why-item p  { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .why-visual {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+    }
+    .why-visual-big {
+      font-family: var(--font-display);
+      font-size: 80px;
+      color: var(--cyan);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .why-visual p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+
+    /* ── NOTÍCIAS ── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .news-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color .2s;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .news-card:hover { border-color: var(--cyan); }
+    .news-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(0,188,212,0.1);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .news-card h3 { font-size: 15px; font-weight: 600; line-height: 1.45; margin-bottom: 10px; color: var(--text); }
+    .news-card p  { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+    .news-date { font-size: 11px; color: var(--muted); margin-top: 16px; }
+    .news-loading { text-align: center; color: var(--muted); padding: 40px 0; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #0a1520 0%, #080808 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 96px 5vw;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(0,188,212,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 { margin-bottom: 16px; position: relative; }
+    .cta-section p  { color: var(--muted); font-size: 17px; margin-bottom: 40px; position: relative; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* ── CONTATO ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: border-color .2s;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .contact-card:hover { border-color: var(--cyan); }
+    .contact-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .contact-card h4 { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+    .contact-card p  { font-size: 15px; font-weight: 500; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    footer p { font-size: 13px; color: var(--muted); }
+    footer a { color: var(--cyan); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-visual { display: none; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .6s ease both; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-icon">R</div>
+    <div>
+      <div class="nav-logo-text">RESCON</div>
+      <span class="nav-logo-sub">Soluções Contábeis</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#servicos">Serviços</a>
+    <a href="#por-que-rescon">Por que a Rescon</a>
+    <a href="#noticias">Notícias</a>
+    <a href="#contato">Contato</a>
+    <a href="/app" class="nav-cta">Acessar Sistema →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
+  <div class="hero-line-2"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up">Contabilidade Inteligente</div>
+    <h1 class="fade-up delay-1">
+      SUA EMPRESA<br/>
+      COM A <span>SAÚDE</span><br/>
+      EM DIA
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Assessoria contábil, fiscal, tributária e trabalhista com tecnologia e transparência. Mais de uma década cuidando da saúde financeira de empresas em Pernambuco.
+    </p>
+    <div class="hero-actions fade-up delay-3">
+      <a href="#contato" class="btn-primary">
+        <span>📞</span> Fale com um especialista
+      </a>
+      <a href="/app" class="btn-secondary">
+        <span>⚡</span> Acessar o sistema
+      </a>
+    </div>
+    <div class="hero-stats fade-up delay-4">
+      <div>
+        <div class="stat-num">+500</div>
+        <div class="stat-label">Empresas atendidas</div>
+      </div>
+      <div>
+        <div class="stat-num">+10</div>
+        <div class="stat-label">Anos de mercado</div>
+      </div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Digital & Online</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="section-alt">
+  <div class="section-label">O que fazemos</div>
+  <h2>NOSSOS <span style="color:var(--cyan)">SERVIÇOS</span></h2>
+  <p class="section-sub">Soluções completas para manter sua empresa em dia com todas as obrigações.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Assessoria Contábil, Fiscal e Tributária</h3>
+      <p>Acompanhamento especializado para otimizar sua carga tributária e manter as demonstrações contábeis sempre corretas.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">👥</div>
+      <h3>Assessoria Trabalhista</h3>
+      <p>Gestão completa da folha de pagamento, eSocial, admissões, demissões e tudo que envolve o departamento pessoal.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📝</div>
+      <h3>Declarações de Imposto de Renda</h3>
+      <p>Declaração de IR para pessoas físicas e jurídicas com segurança, precisão e dentro do prazo.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📄</div>
+      <h3>Certidões Negativas</h3>
+      <p>Emissão de certidões negativas federais, estaduais e municipais para licitações, financiamentos e contratos.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Abertura e Regularização de Empresas</h3>
+      <p>Abertura, alteração, baixa e regularização de empresas de todos os portes e regimes tributários.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💰</div>
+      <h3>Cálculos Trabalhistas e Previdenciários</h3>
+      <p>FGTS, INSS, rescisões, férias, 13º salário e todos os cálculos previdenciários com total precisão.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE RESCON -->
+<section id="por-que-rescon">
+  <div class="section-label">Nossos diferenciais</div>
+  <h2>POR QUE ESCOLHER A <span style="color:var(--cyan)">RESCON</span></h2>
+  <p class="section-sub">Não somos apenas um escritório contábil. Somos parceiros estratégicos do seu negócio.</p>
+  <div class="why-grid">
+    <ul class="why-list">
+      <li class="why-item">
+        <span class="why-icon">⚡</span>
+        <div>
+          <h4>Tecnologia de Ponta</h4>
+          <p>Plataforma ResconFi exclusiva para gestão fiscal e contábil em tempo real. Acesse suas informações de qualquer lugar.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-icon">🎯</span>
+        <div>
+          <h4>Atendimento Personalizado</h4>
+          <p>Cada empresa tem um contador dedicado que conhece profundamente o seu negócio e suas necessidades.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-icon">🔒</span>
+        <div>
+          <h4>Segurança e Sigilo Total</h4>
+          <p>Todos os dados são tratados com absoluto sigilo profissional e armazenados com criptografia de ponta a ponta.</p>
+        </div>
+      </li>
+      <li class="why-item">
+        <span class="why-icon">📱</span>
+        <div>
+          <h4>Comunicação Ágil via WhatsApp</h4>
+          <p>Notificações automáticas, boletos e documentos enviados diretamente pelo WhatsApp. Sem burocracia.</p>
+        </div>
+      </li>
+    </ul>
+    <div class="why-visual">
+      <div class="why-visual-big">A+</div>
+      <p style="font-size:18px;font-weight:600;margin-bottom:12px;">Avaliação dos nossos clientes</p>
+      <p>Comprometimento total com a satisfação e o crescimento de cada empresa que confia na Rescon.</p>
+      <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <div style="background:rgba(0,188,212,0.1);border:1px solid var(--border);border-radius:8px;padding:14px 20px;text-align:center;">
+          <div style="font-family:var(--font-display);font-size:28px;color:var(--cyan);">SIMPLES</div>
+          <div style="font-size:11px;color:var(--muted);letter-spacing:1px;">Nacional</div>
+        </div>
+        <div style="background:rgba(0,188,212,0.1);border:1px solid var(--border);border-radius:8px;padding:14px 20px;text-align:center;">
+          <div style="font-family:var(--font-display);font-size:28px;color:var(--cyan);">MEI</div>
+          <div style="font-size:11px;color:var(--muted);letter-spacing:1px;">Microempreendedor</div>
+        </div>
+        <div style="background:rgba(0,188,212,0.1);border:1px solid var(--border);border-radius:8px;padding:14px 20px;text-align:center;">
+          <div style="font-family:var(--font-display);font-size:28px;color:var(--cyan);">LUCRO</div>
+          <div style="font-size:11px;color:var(--muted);letter-spacing:1px;">Presumido & Real</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTÍCIAS -->
+<section id="noticias" class="section-alt">
+  <div class="section-label">Fique por dentro</div>
+  <h2>NOTÍCIAS <span style="color:var(--cyan)">CONTÁBEIS</span></h2>
+  <p class="section-sub">Atualizações fiscais, tributárias e trabalhistas que impactam diretamente o seu negócio.</p>
+  <div id="news-grid" class="news-grid">
+    <div class="news-loading">
+      <div style="font-size:28px;margin-bottom:12px;">📰</div>
+      <p>Carregando notícias...</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:36px;">
+    <a href="https://www.contabeis.com.br/noticias/" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-flex;">
+      Ver todas as notícias →
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="section-label" style="justify-content:center;">Começe agora</div>
+  <h2>PRONTO PARA COLOCAR SUA<br/><span style="color:var(--cyan)">EMPRESA EM ORDEM?</span></h2>
+  <p>Entre em contato hoje e descubra como a Rescon pode transformar a gestão contábil da sua empresa.</p>
+  <div class="cta-buttons">
+    <a href="https://wa.me/5581993402663?text=Olá, gostaria de saber mais sobre os serviços da Rescon!" target="_blank" class="btn-primary">
+      <span>💬</span> Falar no WhatsApp
+    </a>
+    <a href="/app" class="btn-secondary">
+      <span>🔐</span> Já sou cliente — Acessar sistema
+    </a>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-label">Entre em contato</div>
+  <h2>FALE COM A <span style="color:var(--cyan)">RESCON</span></h2>
+  <p class="section-sub">Estamos prontos para atender você. Escolha o canal de sua preferência.</p>
+  <div class="contact-grid">
+    <a href="https://wa.me/5581993402663" target="_blank" class="contact-card">
+      <span class="contact-icon">💬</span>
+      <div>
+        <h4>WhatsApp</h4>
+        <p>(81) 99340-2663</p>
+      </div>
+    </a>
+    <a href="mailto:contatorescon@gmail.com" class="contact-card">
+      <span class="contact-icon">✉️</span>
+      <div>
+        <h4>E-mail</h4>
+        <p>contatorescon@gmail.com</p>
+      </div>
+    </a>
+    <a href="https://instagram.com/rescon.contabilidade" target="_blank" class="contact-card">
+      <span class="contact-icon">📸</span>
+      <div>
+        <h4>Instagram</h4>
+        <p>@rescon.contabilidade</p>
+      </div>
+    </a>
+    <a href="/app" class="contact-card">
+      <span class="contact-icon">🔐</span>
+      <div>
+        <h4>Área do Cliente</h4>
+        <p>Acesse o ResconFi</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;">RESCON Soluções Contábeis</p>
+    <p>© 2025 — Todos os direitos reservados</p>
+  </div>
+  <div style="display:flex;gap:24px;align-items:center;">
+    <a href="https://wa.me/5581993402663" style="color:var(--muted);font-size:13px;text-decoration:none;" target="_blank">(81) 99340-2663</a>
+    <a href="mailto:contatorescon@gmail.com" style="color:var(--muted);font-size:13px;text-decoration:none;">contatorescon@gmail.com</a>
+    <a href="/app" style="color:var(--cyan);font-size:13px;font-weight:600;text-decoration:none;">Sistema →</a>
+  </div>
+</footer>
+
+<script>
+// Busca notícias via API pública do Contábeis / Jornal Contábil via allorigins proxy
+async function carregarNoticias() {
+  const grid = document.getElementById('news-grid');
+  try {
+    const rssUrl = 'https://www.contabeis.com.br/feed/';
+    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+    const resp = await fetch(proxyUrl, { signal: AbortSignal.timeout(8000) });
+    const data = await resp.json();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(data.contents, 'text/xml');
+    const items = Array.from(doc.querySelectorAll('item')).slice(0, 6);
+
+    if (!items.length) throw new Error('Sem itens');
+
+    grid.innerHTML = items.map(item => {
+      const title = item.querySelector('title')?.textContent || '';
+      const desc  = item.querySelector('description')?.textContent?.replace(/<[^>]+>/g,'').slice(0,120) + '...' || '';
+      const link  = item.querySelector('link')?.textContent || '#';
+      const date  = item.querySelector('pubDate')?.textContent || '';
+      const dateStr = date ? new Date(date).toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric'}) : '';
+      const cats  = item.querySelectorAll('category');
+      const tag   = cats.length ? cats[0].textContent : 'Contabilidade';
+      return `
+        <a href="${link}" target="_blank" rel="noopener" class="news-card">
+          <span class="news-tag">${tag}</span>
+          <h3>${title}</h3>
+          <p>${desc}</p>
+          <span class="news-date">📅 ${dateStr}</span>
+        </a>`;
+    }).join('');
+  } catch(e) {
+    // Fallback com notícias estáticas relevantes
+    grid.innerHTML = [
+      { tag: 'Simples Nacional', title: 'Prazo para pagamento do DAS Simples Nacional e MEI', desc: 'Fique atento aos vencimentos mensais do Documento de Arrecadação do Simples Nacional para evitar multas e juros.' },
+      { tag: 'Imposto de Renda', title: 'IR 2025: saiba quem é obrigado a declarar', desc: 'A Receita Federal divulgou as regras para a declaração do Imposto de Renda de 2025. Veja se você precisa declarar.' },
+      { tag: 'Trabalhista', title: 'eSocial: novas obrigações para 2025', desc: 'Empresas devem estar atentas às atualizações do eSocial que entram em vigor em 2025 e afetam toda a folha de pagamento.' },
+      { tag: 'Fiscal', title: 'NF-e e NFS-e: mudanças no layout para 2025', desc: 'A Receita Federal publicou novas especificações para emissão de notas fiscais eletrônicas. Confira o que muda.' },
+      { tag: 'FGTS', title: 'FGTS Digital: tudo o que você precisa saber', desc: 'O FGTS Digital moderniza a arrecadação do fundo. Entenda o impacto para sua empresa e as novas funcionalidades.' },
+      { tag: 'Contábil', title: 'Reforma Tributária: impactos para as empresas', desc: 'As mudanças trazidas pela reforma tributária brasileira afetarão diferentes setores. Prepare sua empresa com antecedência.' },
+    ].map(n => `
+      <a href="https://www.contabeis.com.br/noticias/" target="_blank" rel="noopener" class="news-card">
+        <span class="news-tag">${n.tag}</span>
+        <h3>${n.title}</h3>
+        <p>${n.desc}</p>
+        <span class="news-date">📅 Acesse o portal para ler mais</span>
+      </a>`).join('');
+  }
+}
+carregarNoticias();
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.service-card, .why-item, .news-card, .contact-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
